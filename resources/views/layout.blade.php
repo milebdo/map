@@ -11,7 +11,7 @@
 
         <!-- Layout styles -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('storage/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/sing/css/application.min.css') }}" rel="stylesheet">
 
         @section('style')
         @show
@@ -31,6 +31,10 @@
             @show
             
         </div>
+        <!-- The Loader. Is shown when pjax happens -->
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+        </div>
         <script src="{{ asset('assets/js/jquery.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/ekko-lightbox.min.js') }}" type="text/javascript"></script>
@@ -42,6 +46,6 @@
         </script>
         @section('script')
         @show
-    
+        
     </body>
 </html>

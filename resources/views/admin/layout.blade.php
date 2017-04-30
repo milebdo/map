@@ -10,11 +10,11 @@
     <title>{{ App\Brand::where('active', 1)->first()->name }}{{ trans('backoffice.title_suffix') }}</title>
 
     <!-- CSS -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
     @section('style')
     @show
     <link href="{{ asset('assets/css/backoffice.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/sing/css/application.min.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -78,9 +78,16 @@
             </div>
         @endif
         
-        @section('content')
-        @show
-        
+        <section class="widget">
+            <div class="widget-body">
+                @section('content')
+                @show
+            </div>
+        </section>
+        <!-- The Loader. Is shown when pjax happens -->
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+        </div>
         <div class="row">
             <div class="col-md-12 main">
                 <hr>
@@ -91,8 +98,38 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+
+    <!-- common libraries. required for every page-->
+    <script src="{{ asset('assets/sing/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/jquery-pjax/jquery.pjax.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/transition.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/collapse.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/dropdown.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/button.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/tooltip.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/alert.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/jQuery-slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/widgster/widgster.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/pace.js/pace.min.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/jquery-touchswipe/jquery.touchSwipe.js') }}"></script>
+
+    <!-- common app js -->
+    <script src="{{ asset('assets/sing/js/settings.js') }}"></script>
+    <script src="{{ asset('assets/sing/js/app.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/tab.js') }}"></script>
+
+    <!-- page specific libs -->
+    <script src="{{ asset('assets/sing/vendor/underscore/underscore-min.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/backbone/backbone.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/backbone.paginator/lib/backbone.paginator.min.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/backgrid/lib/backgrid.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/backgrid-paginator/backgrid-paginator.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/datatables/media/js/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/sing/vendor/bootstrap-select/bootstrap-select.min.js') }}"></script>
+
+    <!-- page specific js -->
+    <script src="{{ asset('assets/sing/js/tables-dynamic.js') }}"></script>
+
     <script src="{{ asset('assets/js/knockout-3.3.0.debug.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
     <script type="text/javascript">
