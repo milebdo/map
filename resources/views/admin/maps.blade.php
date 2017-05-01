@@ -1,22 +1,15 @@
 
 @extends('admin/layout')
 
-@section('style')
-<link href="{{ asset('assets/css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css">
-@stop
-
 @section('content')
-
-<div class="row">
-    <div class="col-md-12">
         
         <h1>{{ trans('backoffice.maps') }}</h1>
         
         <p class="clearfix">
             <a class="btn btn-success pull-right" href="{{ url('admin/maps/form') }}"><i class="fa fa-map-o"></i> {{ trans('backoffice.create_map') }}</a>
         </p>
-
-        <table id="example" class="display table-striped" cellspacing="0" width="100%">
+        <div class="mt">
+        <table id="maps" class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>{{ trans('backoffice.title') }}</th>
@@ -33,7 +26,6 @@
         </table>
 
     </div>
-</div>
 
 @stop
 
@@ -41,7 +33,7 @@
 <script src=" {{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#example').dataTable({
+        $('#maps').dataTable({
             "ajax": "{{ url('admin/maps') }}",
             "columns": [
                 { "data": "content.title" },
