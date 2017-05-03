@@ -44,60 +44,72 @@
         <!-- main notification links are placed inside of .sidebar-nav -->
         <ul class="sidebar-nav">
             <li>
-                <div ng-controller="ngLayerSwitcher" ng-cloak>
-                   <div id="baseLayerSwitcher">
-                       <select class="form-control" 
-                           ng-options="item.content.title for item in baseLayers"
-                           ng-model="baseLayer"
-                           ng-change="selectedBaseLayer()">
-                       </select>
-                   </div>
-                   <div id="layerSwitcher">
-                       <div ng-repeat="g in groupLayers">
-                           <h4 ng-click="toggleGroup(g)"><span class="fa fa-list"> <span ng-bind="g.title"></span></span></h4>
-                           <ul class="list-group" ng-show="g.visible">
-                               <li ng-repeat="l in g.layers" class="list-group-item checkbox">
-                                   <label>
-                                       <input ng-model="l.visible" ng-click="toggleLayer(l)"
-                                           type="checkbox" ng-checked="l.visible" />
-                                       <span ng-bind="l.content.title"></span>
-                                   </label>
-                                   <span ng-show="l.content.seo_description.length"
-                                       class="pull-right layer-details-toggle"
-                                       data-toggle="collapse"
-                                       data-target=".layer-details-@{{ l.id }}"><span class="caret"></span></span>
-                                   <a ng-click="zoomLayer(l)" ng-show="l.ol.getVisible()"
-                                       title="Zoom to layer extent"
-                                       class="btn btn-xs pull-right"><i class="fa fa-expand"></i></a>
-                                   <div class="collapse layer-details-@{{ l.id }}">
-                                       <div ng-bind="l.content.seo_description"></div>
-                                       <img ng-show="l.ol.get('legendURL')" ng-src="@{{ l.ol.get('legendURL') }}" />
-                                   </div>
-                               </li>
-                           </ul>
-                       </div>
-                       <ul class="list-group" ng-show="layers.length">
-                           <li ng-repeat="l in layers" class="list-group-item checkbox">
-                               <label>
-                                   <input ng-model="l.visible" ng-click="toggleLayer(l)"
-                                       type="checkbox" ng-checked="l.visible" />
-                                   <span ng-bind="l.content.title"></span>
-                               </label>
-                               <span ng-show="l.content.seo_description.length"
-                                   class="pull-right layer-details-toggle"
-                                   data-toggle="collapse"
-                                   data-target=".layer-details-@{{ l.id }}"><span class="caret"></span></span>
-                               <a ng-click="zoomLayer(l)" ng-show="l.ol.getVisible()"
-                                   title="Zoom to layer extent"
-                                   class="btn btn-xs pull-right"><i class="fa fa-expand"></i></a>
-                               <div class="collapse layer-details layer-details-@{{ l.id }}">
-                                   <div ng-bind="l.content.seo_description"></div>
-                                   <img ng-show="l.ol.get('legendURL')" ng-src="@{{ l.ol.get('legendURL') }}" />
+                <!-- an example of nested submenu. basic bootstrap collapse component -->
+                <a class="collapsed" href="#sidebar-dashboard" data-toggle="collapse" data-parent="#sidebar">
+                    <span class="icon">
+                        <i class="fa fa-desktop"></i>
+                    </span>
+                    Dashboard
+                    <i class="toggle fa fa-angle-down"></i>
+                </a>
+                <ul id="sidebar-dashboard" class="collapse">
+                    <li>
+                        <div ng-controller="ngLayerSwitcher" ng-cloak>
+                           <div id="baseLayerSwitcher">
+                               <select class="form-control" 
+                                   ng-options="item.content.title for item in baseLayers"
+                                   ng-model="baseLayer"
+                                   ng-change="selectedBaseLayer()">
+                               </select>
+                           </div>
+                           <div id="layerSwitcher">
+                               <div ng-repeat="g in groupLayers">
+                                   <h4 ng-click="toggleGroup(g)"><span class="fa fa-list"> <span ng-bind="g.title"></span></span></h4>
+                                   <ul class="list-group" ng-show="g.visible">
+                                       <li ng-repeat="l in g.layers" class="list-group-item checkbox">
+                                           <label>
+                                               <input ng-model="l.visible" ng-click="toggleLayer(l)"
+                                                   type="checkbox" ng-checked="l.visible" />
+                                               <span ng-bind="l.content.title"></span>
+                                           </label>
+                                           <span ng-show="l.content.seo_description.length"
+                                               class="pull-right layer-details-toggle"
+                                               data-toggle="collapse"
+                                               data-target=".layer-details-@{{ l.id }}"><span class="caret"></span></span>
+                                           <a ng-click="zoomLayer(l)" ng-show="l.ol.getVisible()"
+                                               title="Zoom to layer extent"
+                                               class="btn btn-xs pull-right"><i class="fa fa-expand"></i></a>
+                                           <div class="collapse layer-details-@{{ l.id }}">
+                                               <div ng-bind="l.content.seo_description"></div>
+                                               <img ng-show="l.ol.get('legendURL')" ng-src="@{{ l.ol.get('legendURL') }}" />
+                                           </div>
+                                       </li>
+                                   </ul>
                                </div>
-                           </li>
-                       </ul>
-                   </div>
-               </div>
+                               <ul class="list-group" ng-show="layers.length">
+                                   <li ng-repeat="l in layers" class="list-group-item checkbox">
+                                       <label>
+                                           <input ng-model="l.visible" ng-click="toggleLayer(l)"
+                                               type="checkbox" ng-checked="l.visible" />
+                                           <span ng-bind="l.content.title"></span>
+                                       </label>
+                                       <span ng-show="l.content.seo_description.length"
+                                           class="pull-right layer-details-toggle"
+                                           data-toggle="collapse"
+                                           data-target=".layer-details-@{{ l.id }}"><span class="caret"></span></span>
+                                       <a ng-click="zoomLayer(l)" ng-show="l.ol.getVisible()"
+                                           title="Zoom to layer extent"
+                                           class="btn btn-xs pull-right"><i class="fa fa-expand"></i></a>
+                                       <div class="collapse layer-details layer-details-@{{ l.id }}">
+                                           <div ng-bind="l.content.seo_description"></div>
+                                           <img ng-show="l.ol.get('legendURL')" ng-src="@{{ l.ol.get('legendURL') }}" />
+                                       </div>
+                                   </li>
+                               </ul>
+                           </div>
+                        </div>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
@@ -235,7 +247,8 @@
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
    <main id="content" class="content" role="main">
-           <div id="map"></div>
+        <h1 class="page-title">Dashboard</h1>
+        <div id="map"></div>
     </main>
 </div>
 
