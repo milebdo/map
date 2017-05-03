@@ -17,7 +17,7 @@
             <a class="btn btn-success" href="{{ url('admin/permissions/form') }}"><i class="fa fa-ban"></i> {{ trans('backoffice.create_permission') }}</a>
         </p>
 
-        <table id="example" class="display table-striped" cellspacing="0" width="100%">
+        <table id="example" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>{{ trans('backoffice.label') }}</th>
