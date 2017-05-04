@@ -9,7 +9,7 @@
             <a class="btn btn-success pull-right" href="{{ url('admin/maps/form') }}"><i class="fa fa-map-o"></i> {{ trans('backoffice.create_map') }}</a>
         </p>
         <div class="mt">
-        <table id="maps" class="table table-striped table-hover">
+        <table id="maps" class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
                     <th>{{ trans('backoffice.title') }}</th>

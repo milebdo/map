@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <h1>{{ trans('backoffice.visits') }}</h1>
 
-        <table id="example" class="display table-striped" cellspacing="0" width="100%">
+        <table id="example" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>{{ trans('backoffice.last_visit') }}</th>
