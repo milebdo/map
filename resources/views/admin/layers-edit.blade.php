@@ -765,7 +765,7 @@
 <script src="{{ asset('assets/js/ol.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/OGCService.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-    $.noConflict();
+
     // tables options
     var tables = [];
     var attributes = [];

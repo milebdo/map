@@ -106,7 +106,7 @@
 
 @section('script')
 <script type="text/javascript">
-    $.noConflict();
+
     $('form .import-spatialreference').on('click', function (e) {
         e.preventDefault();
         $.getJSON('{{ url("admin/projections/import") }}/' + $('[name="srid"]').val(), function (r) {
