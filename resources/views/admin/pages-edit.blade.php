@@ -90,6 +90,7 @@
 
 @section('script')
 <script type="text/javascript">
+    $.noConflict();
     var form = new Form($, '#formPage');
 </script>
 @stop

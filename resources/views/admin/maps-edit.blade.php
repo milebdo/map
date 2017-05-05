@@ -264,7 +264,7 @@
 </script>
 <script src="{{ asset('assets/js/mustache.min.js') }}"></script>
 <script type="text/javascript">
-    
+    $.noConflict();
     $('#tableLayeritem .action-add-layer').on('click', function (e) {
         e.preventDefault();
         $('#modal').modal('show');

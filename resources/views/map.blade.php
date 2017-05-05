@@ -119,7 +119,6 @@
                         <i class="fa fa-bars fa-lg hidden-xs"></i>
                     </a>
                 </li>
-                <li><a href="#" data-toggle="collapse" data-target="#content" aria-expanded="false" aria-controls="content">{{ trans('layout.link_layers') }}</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" href="#" data-toggle="collapse" data-target="#map-items" aria-expanded="false" aria-controls="content">
                         {{ trans('layout.link_maps') }}
@@ -128,21 +127,6 @@
                     <ul class="dropdown-menu" id="map-items">
                     @foreach(App\Map::getPublishedItems() as $item)
                         <li><a href="{{ url('maps/' . $item->id) }}">{{ $item->content->title }}</a></li>
-                    @endforeach
-                    </ul>
-                </li>
-                <li class="dropdown" ng-controller="ngContent" 
-                    ng-init="target = '#content-modal'">
-                    <input type="hidden" ng-model="url" />
-                    <a class="dropdown-toggle" href="#" data-toggle="collapse" data-target="#content-items" aria-expanded="false" aria-controls="content">
-                        {{ trans('layout.link_contents') }}
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" id="content-items">
-                    @foreach(App\Content::getPublishedItems() as $item)
-                    <li><a ng-click="url = '{{ url($item->seo_slug) }}'; title = '{{ $item->title }}'; show();"
-                            href="">{{ $item->title }}</a>
-                    </li>
                     @endforeach
                     </ul>
                 </li>
@@ -199,7 +183,6 @@
                 </li>
                 @if (!Auth::check())
                 <li><a href="{{ url('auth/login') }}">{{ trans('layout.link_login') }}</a></li>
-                <li><a href="{{ url('auth/register') }}">{{ trans('layout.link_register') }}</a></li>
                 @else
                 <li><a href="{{ url('admin/dashboard') }}">{{ trans('layout.link_admin') }}</a></li>
                 <li><a href="{{ url('auth/logout') }}">{{ trans('layout.link_logout') }}</a></li>
@@ -311,7 +294,7 @@
 
 @section('script')
 <script type="text/javascript">
-    
+    $.noConflict();
     $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(e) {
         e.preventDefault();
         return $(this).ekkoLightbox();

@@ -3,7 +3,7 @@
 return [
     
     // Layout
-    'title_suffix' => ' - MapIgniter',
+    'title_suffix' => ' - Digimap',
     'toggle_navigation' => 'Toggle Navigation',
     'maps' => 'Maps',
     'layers' => 'Layers',
@@ -19,7 +19,7 @@ return [
     'view_site' => 'View Site',
     'my_account' => 'My Account',
     'logout' => 'Logout',
-    'copyright' => '&copy; MapIgniter :year',
+    'copyright' => '&copy; Digimap :year',
     
     // Common
     'general' => 'General',

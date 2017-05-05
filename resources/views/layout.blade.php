@@ -39,6 +39,7 @@
         <script src="{{ asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/ekko-lightbox.min.js') }}" type="text/javascript"></script>
         <script type="text/javascript">
+            $.noConflict();
             $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(e) {
                 e.preventDefault();
                 return $(this).ekkoLightbox();
