@@ -294,7 +294,7 @@
 
 @section('script')
 <script type="text/javascript">
-    $.noConflict();
+
     $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(e) {
         e.preventDefault();
         return $(this).ekkoLightbox();
