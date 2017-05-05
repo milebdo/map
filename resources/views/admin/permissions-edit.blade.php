@@ -59,6 +59,7 @@
 
 @section('script')
 <script type="text/javascript">
+    $.noConflict();
     var form = new Form($, '#formPermission');
 </script>
 @stop

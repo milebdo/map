@@ -43,7 +43,6 @@
 
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">{{ trans('layout.btn_login') }}</button>
-                                <a class="btn btn-info" href="{{ url('ldap/login') }}">{{ trans('layout.link_login_ldap') }}</a>
                                 <a class="btn btn-warning" href="{{ url('/') }}">{{ trans('layout.link_cancel') }}</a>
                             </div>
                         </form>

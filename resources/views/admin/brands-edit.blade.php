@@ -103,6 +103,7 @@
 @section('script')
 <script src=" {{ asset('assets/js/fileinput.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
+    $.noConflict();
     $("#logo").fileinput({
         @if ($brand->hasPicture())
         initialPreview: [
