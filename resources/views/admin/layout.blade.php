@@ -10,12 +10,11 @@
     <title>{{ App\Brand::where('active', 1)->first()->name }}{{ trans('backoffice.title_suffix') }}</title>
 
     <!-- CSS -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
     @section('style')
     @show
-    <link href="{{ asset('assets/css/backoffice.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/sing/css/application.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/backoffice.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

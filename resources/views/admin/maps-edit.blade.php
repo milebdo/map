@@ -111,12 +111,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             
-                            <table class="table table-striped" id="tableLayeritem">
+                            <table class="table table-striped table-bordered" id="tableLayeritem">
                                 <thead>
                                     <tr>
                                         <th>{{ trans('backoffice.title') }}</th>
                                         <th class="col-md-2">
-                                            <button class="btn btn-primary btn-xs action-add-layer">Add Layer</button>
+                                            <button class="btn btn-primary btn-xs action-add-layer"
+                                                data-toggle="modal"
+                                            >
+                                                Add Layer
+                                            </button>
                                         </th>
                                     </tr>
                                 </thead>
@@ -160,8 +164,10 @@
 @stop
 
 @section('script')
-<div class="modal fade" id="modal">
+<div class="modal fade" id="modalAddNewLayer">
     <div class="modal-dialog">
+        <div class="modal-header">
+        </div>
         <div class="modal-content">
             
             <form id="formLayeritem" method="POST" action="{{ url('/admin/maps/layeritem/add') }}" enctype="mutipart/form-data">
@@ -267,7 +273,10 @@
     $.noConflict();
     $('#tableLayeritem .action-add-layer').on('click', function (e) {
         e.preventDefault();
-        $('#modal').modal('show');
+        $('#modalAddNewLayer').appendTo('body').modal('show');
+        $('.modal-backdrop').css({
+            'z-index': '-1'
+        });
     });
     
     $('#tableLayeritem').on('click', '.action-layeritem-del', function (e) {
@@ -307,7 +316,7 @@
     var formLayeritem = new Form($, '#formLayeritem', {
         cb: function (r) {
             if (r.success) {
-                $('#modal').modal('hide');
+                $('#modalAddNewLayer').modal('hide');
                 var data = {
                     urldel: "{{ url ('admin/maps/' . $map->id . '/layeritem/del') }}/" + r.id,
                     urlorderup: "{{ url ('admin/maps/' . $map->id . '/layeritem/orderup') }}/" + r.id,
