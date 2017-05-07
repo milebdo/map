@@ -40,7 +40,7 @@
 @section('script')
 <script src=" {{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-
+;(function($) {
     $(document).ready(function() {
         $('#example').dataTable({
             "ajax": "{{ url('admin/contents') }}",
@@ -59,5 +59,6 @@
             ]
         });
     });
+)(jQuery);
 </script>
 @stop

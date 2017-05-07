@@ -40,8 +40,8 @@
 
 @section('script')
 <script type="text/javascript">
-
+;(function($) {
     var form = new Form($, '#formContent');
-    
+)(jQuery);  
 </script>
 @stop

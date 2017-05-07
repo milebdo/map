@@ -88,7 +88,7 @@
 <script src="{{ asset('assets/js/jquery.flot.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.flot.time.min.js') }}"></script>
 <script type="text/javascript">
-
+;(function($) {
     var date_options = {
         format: 'yyyy-mm-dd',
         autoclose: true
@@ -175,5 +175,6 @@
                 }
         });
     }
+)(jQuery);
 </script>
 @stop
