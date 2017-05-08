@@ -270,7 +270,7 @@
 </script>
 <script src="{{ asset('assets/js/mustache.min.js') }}"></script>
 <script type="text/javascript">
-    $.noConflict();
+;(function($) {
     $('#tableLayeritem .action-add-layer').on('click', function (e) {
         e.preventDefault();
         $('#modalAddNewLayer').appendTo('body').modal('show');
@@ -327,6 +327,7 @@
             }
         }
     });
+})(jQuery);
     
 </script>
 @stop

@@ -269,7 +269,7 @@
 <script src="{{ asset('assets/js/fileinput.min.js') }}" type="text/javascript"></script>
 <script src="http://maps.googleapis.com/maps/api/js" type="text/javascript"></script>
 <script type="text/javascript">
-    $.noConflict();
+;(function($) {
     var date_options = {
         format: 'yyyy-mm-dd',
         autoclose: true
@@ -454,6 +454,6 @@
     });
     
     var form = new Form($, '#formContent', {files: ['#seo_image']});
-    
+})(jQuery);
 </script>
 @stop

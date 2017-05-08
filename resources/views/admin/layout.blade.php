@@ -101,9 +101,8 @@
 
     <!-- common libraries. required for every page-->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/sing/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/jquery-pjax/jquery.pjax.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/transition.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/collapse.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/dropdown.js') }}"></script>
