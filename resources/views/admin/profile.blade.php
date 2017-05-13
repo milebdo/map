@@ -84,7 +84,7 @@
 @section('script')
 <script src="{{ asset('assets/js/fileinput.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-    $.noConflict();
+;(function($) {
     $("#avatar").fileinput({
         @if ($user->hasAvatar())
         initialPreview: [
@@ -97,5 +97,6 @@
         showRemove: false,
 		maxFileCount: 1,
     });
+})(jQuery);
 </script>
 @stop

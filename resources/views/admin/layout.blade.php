@@ -25,8 +25,6 @@
 
     <body>
       
-        
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -40,19 +38,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar">
-                <li><a href="{{ url('/admin/maps/list') }}"><i class="fa fa-map-o"></i> {{ trans('backoffice.maps') }}</a></li>
-                <li><a href="{{ url('/admin/layers/list') }}"><i class="fa fa-database"></i> {{ trans('backoffice.layers') }}</a></li>
-                <!-- <li><a href="{{ url('/admin/projections/list') }}"><i class="fa fa-arrows-alt"></i> {{ trans('backoffice.projections') }}</a></li> -->
-                <!-- <li><a href="{{ url('/admin/contents/list') }}"><i class="fa fa-files-o"></i> {{ trans('backoffice.contents') }}</a></li> -->
+                <li>
+                    <a href="{{ url('/admin/maps/list') }}"><i class="fa fa-map-o"></i> {{ trans('backoffice.maps') }}</a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/layers/list') }}"><i class="fa fa-database"></i> {{ trans('backoffice.layers') }}</a>
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="fa fa-cogs"></i> {{ trans('backoffice.system') }} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <!-- <li><a href="{{ url('/admin/pages/list') }}"><i class="fa fa-newspaper-o"></i> {{ trans('backoffice.pages') }}</a></li> -->
                         <li><a href="{{ url('/admin/users/list') }}"><i class="fa fa-user"></i> {{ trans('backoffice.users') }}</a></li>
                         <li><a href="{{ url('/admin/roles/list') }}"><i class="fa fa-users"></i> {{ trans('backoffice.roles') }}</a></li>
                         <li><a href="{{ url('/admin/permissions/list') }}"><i class="fa fa-ban"></i> {{ trans('backoffice.permissions') }}</a></li>
-                        <!-- <li><a href="{{ url('/admin/brands/list') }}"><i class="fa fa-trademark"></i> {{ trans('backoffice.brands') }}</a></li>
-                        <li><a href="{{ url('/admin/visits/list') }}"><i class="fa fa-eye"></i> {{ trans('backoffice.visits') }}</a></li> -->
                     </ul>
                 </li>
             </ul>
@@ -84,10 +81,10 @@
                 @show
             </div>
         </section>
-        <!-- The Loader. Is shown when pjax happens -->
-        <div class="loader-wrap hiding hide">
-            <i class="fa fa-circle-o-notch fa-spin-fast"></i>
-        </div>
+       <!-- The Loader. Is shown when pjax happens -->
+       <div class="loader-wrap hiding hide">
+           <i class="fa fa-circle-o-notch fa-spin-fast"></i>
+       </div>
         <div class="row">
             <div class="col-md-12 main">
                 <hr>
@@ -102,7 +99,6 @@
     <!-- common libraries. required for every page-->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/jquery-pjax/jquery.pjax.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/transition.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/collapse.js') }}"></script>
     <script src="{{ asset('assets/sing/vendor/bootstrap-sass/vendor/assets/javascripts/bootstrap/dropdown.js') }}"></script>

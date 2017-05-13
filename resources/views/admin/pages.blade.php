@@ -27,13 +27,6 @@
                     <th class="col-md-2">{{ trans('backoffice.options') }}</th>
                 </tr>
             </thead>
-
-            <tfoot>
-                <tr>
-                    <th>{{ trans('backoffice.name') }}</th>
-                    <th>{{ trans('backoffice.options') }}</th>
-                </tr>
-            </tfoot>
         </table>
 
     </div>
@@ -42,9 +35,8 @@
 @stop
 
 @section('script')
-<script src=" {{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-    $.noConflict();
+;(function($) {
     $(document).ready(function() {
         $('#example').dataTable({
             "ajax": "{{ url('admin/pages') }}",
@@ -61,5 +53,6 @@
             ]
         });
     });
+})(jQuery);
 </script>
 @stop

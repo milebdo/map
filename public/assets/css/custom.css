@@ -1,0 +1,19 @@
+.map-content {
+    padding-top: 90px;
+    background-color: #eee;
+}
+
+.map-content .page-title {
+	padding: 10px 30px !important;
+}
+
+.list-group-item {
+	background: none;
+	border: none;
+	margin-left: 10px;
+}
+
+input[type=checkbox]:checked +  label:after {
+    font-family: 'FontAwesome';
+    content: "\f00c";
+}

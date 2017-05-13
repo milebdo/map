@@ -25,6 +25,11 @@
     display: none;
 }
 
+.table>tbody>tr>td, .table>tfoot>tr>th, .table>tfoot>tr>td {
+    vertical-align: top;
+    border 1px solid #ddd;
+}
+
 input[type = 'search'] {
 	-webkit-appearance: textfield !important;
 	-moz-box-sizing: content-box !important;
