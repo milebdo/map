@@ -16,20 +16,13 @@
             <a class="btn btn-success pull-right" href="{{ url('admin/roles/form') }}"><i class="fa fa-group"></i> {{ trans('backoffice.create_role') }}</a>
         </p>
 
-        <table id="example" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
+        <table id="example" class="display table table-striped table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>{{ trans('backoffice.name') }}</th>
                     <th class="col-md-2">{{ trans('backoffice.options') }}</th>
                 </tr>
             </thead>
-
-            <tfoot>
-                <tr>
-                    <th>{{ trans('backoffice.name') }}</th>
-                    <th>{{ trans('backoffice.options') }}</th>
-                </tr>
-            </tfoot>
         </table>
 
     </div>
@@ -38,9 +31,8 @@
 @stop
 
 @section('script')
-<script src=" {{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-    $.noConflict();
+;(function($) {
     $(document).ready(function() {
         $('#example').dataTable({
             "ajax": "{{ url('admin/roles') }}",
@@ -58,5 +50,6 @@
             ]
         });
     });
+})(jQuery);
 </script>
 @stop

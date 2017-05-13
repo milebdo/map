@@ -65,7 +65,7 @@ html, body {
     top: 50px;
     bottom: 0px;
     left: 0px;
-    width: 350px;
+    width: 38px;
     background-color: #e0e0e0;
     z-index: 40;
     overflow-x: hidden;
@@ -91,8 +91,8 @@ html, body {
         top: 50px;
         bottom: auto;
         height: 280px;
-        left: 0px;
-        right: 0px;
+        left: -20px;
+        right: -20px;
         z-index: 35;
     }
 

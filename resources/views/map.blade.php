@@ -10,6 +10,7 @@
     <link href="{{ asset('assets/css/map_print.css') }}" rel="stylesheet" media="print">
     <link href="{{ asset('assets/css/ol.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/sing/css/application.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
         <link href="css/application-ie9-part2.css" rel="stylesheet">
@@ -246,7 +247,7 @@
 
 <div class="content-wrap">
     <!-- main page content. the place to put widgets in. usually consists of .row > .col-md-* > .widget.  -->
-   <main id="content" class="content" role="main">
+   <main id="content" class="map-content" role="main">
         <h1 class="page-title">Dashboard</h1>
         <div id="map"></div>
     </main>

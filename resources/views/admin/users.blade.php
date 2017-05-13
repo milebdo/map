@@ -16,7 +16,7 @@
             <a class="btn btn-success pull-right" href="{{ url('admin/users/form') }}"><i class="fa fa-user"></i> {{ trans('backoffice.create_user') }}</a>
         </p>
 
-        <table id="example" class="display table table-striped table-hover table-bordered" cellspacing="0" width="100%">
+        <table id="example" class="display table table-striped table-hover" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>{{ trans('backoffice.name') }}</th>
@@ -24,14 +24,6 @@
                     <th class="col-md-2">{{ trans('backoffice.options') }}</th>
                 </tr>
             </thead>
-
-            <tfoot>
-                <tr>
-                    <th>{{ trans('backoffice.name') }}</th>
-                    <th>{{ trans('backoffice.email') }}</th>
-                    <th>{{ trans('backoffice.options') }}</th>
-                </tr>
-            </tfoot>
         </table>
 
     </div>
@@ -40,9 +32,8 @@
 @stop
 
 @section('script')
-<script src=" {{ asset('assets/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
-    $.noConflict();
+;(function($) {
     $(document).ready(function() {
         $('#example').dataTable({
             "ajax": "{{ url('admin/users') }}",
@@ -60,5 +51,6 @@
             ]
         });
     });
+})(jQuery);
 </script>
 @stop
