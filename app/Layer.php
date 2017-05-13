@@ -105,17 +105,17 @@ class Layer extends Content
         return [
             'group' => 'Group',
             'geojson' => 'Map Editor',
-            'bing' => 'Bing',
-            'mapquest' => 'MapQuest',
+//            'bing' => 'Bing',
+//            'mapquest' => 'MapQuest',
             'osm' => 'Open Street Map',
-            'opencyclemap' => 'Open Cycle Map',
-            'wms' => 'WMS',
-            'wfs' => 'WFS',
-            'gpx' => 'GPX',
+//            'opencyclemap' => 'Open Cycle Map',
+//            'wms' => 'WMS',
+//            'wfs' => 'WFS',
+//            'gpx' => 'GPX',
             'kml' => 'KML',
-            'shapefile' => 'Shapefile (requires MapServer)',
-            'postgis' => 'Postgis',
-            'geopackage' => 'GeoPackage (requires PHP SQLite extension)'
+//            'shapefile' => 'Shapefile (requires MapServer)',
+//            'postgis' => 'Postgis',
+//            'geopackage' => 'GeoPackage (requires PHP SQLite extension)'
         ];
     }
     
