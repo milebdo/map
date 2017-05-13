@@ -146,7 +146,133 @@ function ($http, ol, proj4, c) {
                 layer = createLayerGPX(item);
                 break;
             case "kml":
-                layer = createLayerKML(item);
+                layer = createLayerKML(item);                
+                var vectorSource = layer.getSource();
+                var i=0;
+                var region;
+                
+                map.on('postrender', function(evt){  
+                	
+                var featureCount = vectorSource.getFeatures().length;
+                vectorSource.forEachFeature(function(feature) {                	
+                	
+                	if(i<=featureCount)
+                	{
+                		region = (function() {
+                			   var stroke = new ol.style.Stroke({
+                			     color: '#EEE8AA'
+                			   });
+                			   var textStroke = new ol.style.Stroke({
+                			     color: '#fff',
+                			     width: 1
+                			   });
+                			   var textFill = new ol.style.Fill({
+                			     color: 'white'
+                			   });
+                			   
+                			   return function(feature, resolution) {
+//	                			   if(feature.get("ID")>132 && feature.get("ID")<160)
+//	                			   {
+//	                  			     return [new ol.style.Style({
+//	                  			       stroke: stroke,
+//	                  			       fill: new ol.style.Fill({color: 'yellow'}),
+//	                  			       text: new ol.style.Text({
+//	                  			         font: '10px Calibri,sans-serif',
+//	                  			         text: feature.get("KECAMATAN"),
+//	                  			         fill: textFill,
+//	                  			         stroke: textStroke
+//	                  			       })
+//	                  			     })];
+//	                			   }
+//	                			   if(feature.get("KECAMATAN"))
+//	                			   {
+//	                  			     return [new ol.style.Style({
+//	                  			       stroke: stroke,
+//	                  			       fill: new ol.style.Fill({color: 'green'}),
+//	                  			       text: new ol.style.Text({
+//	                  			         font: '10px Calibri,sans-serif',
+//	                  			         text: feature.get("KECAMATAN"),
+//	                  			         fill: textFill,
+//	                  			         stroke: textStroke
+//	                  			       })
+//	                  			     })];
+//	                			   }
+	                			   //if(feature.get("DESA"))
+	                			   //{
+	                				   if(feature.get("KECAMATAN")=='RANCASARI'){
+	                    				   var polytFill = new ol.style.Fill({
+	                        			     color: '#B9BF08'
+	                        			   });
+	                    			   }
+	                    			   else {
+	                    				   var polytFill = new ol.style.Fill({
+	                          			     color: '#0E9A10'
+	                          			   });
+	                    			   }
+	                				   
+	                				   if(feature.get("DESA")=='DERWATI'){
+	                    				   var polytFill = new ol.style.Fill({
+	                        			     color: 'red'
+	                        			   });
+	                    			   }
+	                				   
+	                  			     return [new ol.style.Style({
+	                  			       stroke: stroke,
+	                  			       fill: polytFill,
+	                  			       text: new ol.style.Text({
+	                  			         font: '8px Calibri,sans-serif',
+	                  			         text: feature.get("DESA")+'\n'+feature.get("KECAMATAN"),
+	                  			         fill: textFill,
+//	                  			         stroke: textStroke
+	                  			       })
+	                  			     })];
+	                			  // }
+	                			   //else {
+	                				   /*if(feature.get("KECAMATAN")=='RANCASARI'){
+	                    				   var polytFill = new ol.style.Fill({
+	                        			     color: 'white'
+	                        			   });
+	                    			   }
+	                    			   else {
+	                    				   var polytFill = new ol.style.Fill({
+	                          			     color: 'white'
+	                          			   });
+	                    			   }*/
+	                				   
+	                				   /*return [new ol.style.Style({
+		                  			       stroke: stroke,
+		                  			       fill: polytFill,
+		                  			       text: new ol.style.Text({
+		                  			         font: '10px Calibri,sans-serif',
+		                  			         text: feature.get("KECAMATAN"),
+		                  			         fill: textFill,
+		                  			         stroke: textStroke
+		                  			       })
+		                  			     })];*/
+	                			  // }
+                			   };
+//                			   else {
+//                				   return function(feature, resolution) {
+//                      			     return [new ol.style.Style({
+//                      			       stroke: stroke,
+//                      			       fill: new ol.style.Fill({color: 'red'}),
+//                      			       text: new ol.style.Text({
+//                      			         font: '10px Calibri,sans-serif',
+//                      			         text: feature.get("KECAMATAN"),
+//                      			         fill: textFill,
+//                      			         stroke: textStroke
+//                      			       })
+//                      			     })];
+//                      			   };
+//                			   }                			   
+                			 })()
+                    	i++;
+                	}     
+                  });  
+                
+                	layer.setStyle(region);
+	              });
+            	
                 break;
             case "shapefile":
                 layer = createLayerShapefile(item);
@@ -431,9 +557,27 @@ function ($http, ol, proj4, c) {
         var layer = new ol.layer.Vector({
             source: new ol.source.Vector({
                 url: c.baseURL + '/storage/layer/' + item.layer.id + '/' + item.layer.kml_filename,
-                format: new ol.format.KML()
-            })
-        });
+                format: new ol.format.KML({
+                	extractStyles: false,
+                    extractAttributes: true,
+                    maxDepth: 2
+                })
+            }),
+//            style: createPolygonStyleFunction(),
+//            style: new ol.style.Style({
+////                stroke: new ol.style.Stroke({color: 'white', width: 1}),
+////                fill: new ol.style.Fill({color: 'gainsboro'})
+////                text: new ol.style.Text({
+////                	textAlign: 'center',
+////                	textBaseline: 'middle',
+////                	font: 'Courier New',
+////                	fill: '#1a1a1a'
+////                })
+//            }),
+            opacity: 0.8
+        }); 
+//        console.log(layer.getSource());
+        
         return layer;
     };
     
