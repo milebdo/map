@@ -59,6 +59,6 @@
             ]
         });
     });
-)(jQuery);
+})(jQuery);
 </script>
 @stop
