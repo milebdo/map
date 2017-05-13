@@ -1,10 +1,22 @@
+#map {
+	height: 100%;
+}
+
+.content-wrap {
+	background-color: #eee;
+}
+
 .map-content {
-    padding-top: 90px;
+    padding-top: 55px;
     background-color: #eee;
+    height: 100%;
 }
 
 .map-content .page-title {
 	padding: 10px 30px !important;
+	z-index: 99;
+	position: absolute;
+	left: 30px;
 }
 
 .list-group-item {
