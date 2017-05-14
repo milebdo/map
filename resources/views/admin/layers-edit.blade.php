@@ -765,6 +765,7 @@
 <script src="{{ asset('assets/js/ol.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/OGCService.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
+
     // tables options
     var tables = [];
     var attributes = [];
@@ -1381,7 +1382,10 @@
             $.each(attributes, function(i, item) {
                 $('#modal .modal-body').append(Mustache.render($('#feature_attribute_tpl').html(), {name: item, value: editingFeature.get(item)}));
             });
-            $('#modal').modal('show');
+            $('#modal').appendTo('body').modal('show');
+            $('.modal-backdrop').css({
+                'z-index': '-1'
+            });
 
         }
         select.on('select', function(e) {
@@ -1428,8 +1432,9 @@
     };
 
     EditMap();
-    
+
     @endif
+
     
 </script>
 @stop
