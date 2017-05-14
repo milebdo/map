@@ -25,6 +25,22 @@
 	margin-left: 10px;
 }
 
+.item-zoom {
+	padding: 0 !important;
+}
+
+.checkbox input[type=checkbox] {
+	display: block !important;
+}
+
+.checkbox input[type=checkbox]:hover {
+	cursor: pointer;
+}
+
+.checkbox label:before {
+	content: none !important;
+}
+
 input[type=checkbox]:checked +  label:after {
     font-family: 'FontAwesome';
     content: "\f00c";

@@ -74,12 +74,16 @@
                                                <span ng-bind="l.content.title"></span>
                                            </label>
                                            <span ng-show="l.content.seo_description.length"
-                                               class="pull-right layer-details-toggle"
+                                               class="pull-right layer-details-toggle item-zoom"
                                                data-toggle="collapse"
-                                               data-target=".layer-details-@{{ l.id }}"><span class="caret"></span></span>
+                                               data-target=".layer-details-@{{ l.id }}">
+                                                <span class="caret"></span>
+                                            </span>
                                            <a ng-click="zoomLayer(l)" ng-show="l.ol.getVisible()"
                                                title="Zoom to layer extent"
-                                               class="btn btn-xs pull-right"><i class="fa fa-expand"></i></a>
+                                               class="item-zoom btn btn-xs pull-right">
+                                               <i class="fa fa-expand"></i>
+                                            </a>
                                            <div class="collapse layer-details-@{{ l.id }}">
                                                <div ng-bind="l.content.seo_description"></div>
                                                <img ng-show="l.ol.get('legendURL')" ng-src="@{{ l.ol.get('legendURL') }}" />
@@ -100,7 +104,7 @@
                                            data-target=".layer-details-@{{ l.id }}"><span class="caret"></span></span>
                                        <a ng-click="zoomLayer(l)" ng-show="l.ol.getVisible()"
                                            title="Zoom to layer extent"
-                                           class="btn btn-xs pull-right"><i class="fa fa-expand"></i></a>
+                                           class="btn btn-xs pull-right item-zoom"><i class="fa fa-expand"></i></a>
                                        <div class="collapse layer-details layer-details-@{{ l.id }}">
                                            <div ng-bind="l.content.seo_description"></div>
                                            <img ng-show="l.ol.get('legendURL')" ng-src="@{{ l.ol.get('legendURL') }}" />
