@@ -25,12 +25,12 @@
     </head>
 
     <body>
-        <div class="content-wrap">
+        
             
             @section('content')
             @show
             
-        </div>
+    
         <!-- The Loader. Is shown when pjax happens -->
         <div class="loader-wrap hiding hide">
             <i class="fa fa-circle-o-notch fa-spin-fast"></i>
@@ -39,11 +39,12 @@
         <script src="{{ asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('assets/js/ekko-lightbox.min.js') }}" type="text/javascript"></script>
         <script type="text/javascript">
-            $.noConflict();
+        ;(function($) {
             $(document).delegate('*[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', 'click', function(e) {
                 e.preventDefault();
                 return $(this).ekkoLightbox();
             });
+        })(jQuery);
         </script>
         @section('script')
         @show
