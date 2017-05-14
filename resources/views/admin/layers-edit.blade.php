@@ -560,7 +560,7 @@
                                     <input class="form-control" type="file" name="ol_style_static_icon" id="ol_style_static_icon" value="">
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 hidden">
                                 <div class="form-group">
                                     <label for="ol_style_static_fill_color">{{ trans('backoffice.ol_style_static_fill_color') }}</label>
                                     <span class="help-block alert-danger v-error-ol_style_static_fill_color"></span>
@@ -572,7 +572,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 hidden">
                                 <div class="form-group">
                                     <label for="ol_style_static_stroke_color">{{ trans('backoffice.ol_style_static_stroke_color') }}</label>
                                     <span class="help-block alert-danger v-error-ol_style_static_stroke_color"></span>
@@ -584,7 +584,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 hidden">
                                 <div class="form-group">
                                     <label for="ol_style_static_stroke_width">{{ trans('backoffice.ol_style_static_stroke_width') }}</label>
                                     <span class="help-block alert-danger v-error-ol_style_static_stroke_width"></span>
@@ -594,8 +594,8 @@
                                 </div>
                             </div>
                         </div>
-                        <legend>{{ trans('backoffice.dynamic_style') }}</legend>
-                        <div class="row">
+                       
+                        <div class="row hidden">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ol_style_field_icon">{{ trans('backoffice.ol_style_field_icon') }}</label>
