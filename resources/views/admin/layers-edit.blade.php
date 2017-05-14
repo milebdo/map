@@ -764,6 +764,7 @@
 <script src="{{ asset('assets/js/bootstrap-colorpicker.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/ol.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/OGCService.js') }}" type="text/javascript"></script>
+<script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.14/proj4.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
 
     // tables options
@@ -1218,13 +1219,13 @@
     });
     
     var csv_uploader = $("#csv_uploader").fileinput({
-        language: "pt",
+        language: "id",
         uploadUrl: "{{ url('admin/layers/import/csv/'.$layer->id) }}",
         allowedFileExtensions: ["csv"],
-        maxFileSize: 2000,
+        maxFileSize: 20000,
         showCaption: false,
         overwriteInitial: true,
-        showUpload: false,
+        showUpload: true,
         showRemove: false,
         uploadExtraData: function() {
             return {
@@ -1268,12 +1269,20 @@
             source: new ol.source.OSM()
         });
 
+        proj4.defs('EPSG:32748', "+proj=utm +zone=48 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs");
+
+        var projection = new ol.proj.Projection({
+            code: 'EPSG:32748',
+            units: 'm'
+        });
+        
         var map = new ol.Map({
             layers: [raster],
             target: 'map',
             view: new ol.View({
-                center: [0, 0],
-                zoom: 2
+                center: [11979014, -772086],
+                zoom: 13,
+                maxZoom: 32,
             })
         });
 
