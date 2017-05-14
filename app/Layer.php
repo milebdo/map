@@ -105,17 +105,8 @@ class Layer extends Content
         return [
             'group' => 'Group',
             'geojson' => 'Map Editor',
-//            'bing' => 'Bing',
-//            'mapquest' => 'MapQuest',
             'osm' => 'Open Street Map',
-//            'opencyclemap' => 'Open Cycle Map',
-//            'wms' => 'WMS',
-//            'wfs' => 'WFS',
-//            'gpx' => 'GPX',
             'kml' => 'KML',
-//            'shapefile' => 'Shapefile (requires MapServer)',
-//            'postgis' => 'Postgis',
-//            'geopackage' => 'GeoPackage (requires PHP SQLite extension)'
         ];
     }
     
@@ -399,7 +390,7 @@ class Layer extends Content
      * Delete layer
      */
     public function delete() {
-        //array_map('unlink', glob($this->getPublicStoragePath()."/*"));
+        array_map('unlink', glob($this->getPublicStoragePath()."/*"));
         parent::delete();
     }
     

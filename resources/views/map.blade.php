@@ -27,6 +27,50 @@
          https://code.google.com/p/chromium/issues/detail?id=332189
          */
     </script>
+    <style>
+      .ol-popup {
+        position: absolute;
+        background-color: white;
+        -webkit-filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+        filter: drop-shadow(0 1px 4px rgba(0,0,0,0.2));
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #cccccc;
+        bottom: 12px;
+        left: -50px;
+        min-width: 280px;
+      }
+      .ol-popup:after, .ol-popup:before {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      .ol-popup:after {
+        border-top-color: white;
+        border-width: 10px;
+        left: 48px;
+        margin-left: -10px;
+      }
+      .ol-popup:before {
+        border-top-color: #cccccc;
+        border-width: 11px;
+        left: 48px;
+        margin-left: -11px;
+      }
+      .ol-popup-closer {
+        text-decoration: none;
+        position: absolute;
+        top: 2px;
+        right: 8px;
+      }
+      .ol-popup-closer:after {
+        content: "✖";
+      }
+    </style>
 </head>
 <body>
 <!--
@@ -112,6 +156,12 @@
                                    </li>
                                </ul>
                            </div>
+                        </div>
+                        <div id="feature-info" class="row">
+                            <div class="col-md-12">
+                                <div ng-controller="ngFeatureInfo" ng-cloak>
+                                </div>
+                            </div>
                         </div>
                     </li>
                 </ul>
@@ -201,7 +251,7 @@
                 @if (!Auth::check())
                 <li><a href="{{ url('auth/login') }}">{{ trans('layout.link_login') }}</a></li>
                 @else
-                <li><a href="{{ url('admin/dashboard') }}">{{ trans('layout.link_admin') }}</a></li>
+                <li><a href="{{ url('admin/maps/list') }}">{{ trans('layout.link_admin') }}</a></li>
                 <li><a href="{{ url('auth/logout') }}">{{ trans('layout.link_logout') }}</a></li>
                 @endif
             </ul>
@@ -254,6 +304,10 @@
    <main id="content" class="map-content" role="main">
         <h1 class="page-title">Dashboard</h1>
         <div id="map"></div>
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+            <div id="popup-content"></div>
+        </div>
         <div id="print-version"></div>
     </main>
 </div>

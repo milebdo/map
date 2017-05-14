@@ -155,7 +155,6 @@ function ($http, ol, proj4, c) {
                 	
                 var featureCount = vectorSource.getFeatures().length;
                 vectorSource.forEachFeature(function(feature) {                	
-                	
                 	if(i<=featureCount)
                 	{
                 		region = (function() {
@@ -558,25 +557,13 @@ function ($http, ol, proj4, c) {
             source: new ol.source.Vector({
                 url: c.baseURL + '/storage/layer/' + item.layer.id + '/' + item.layer.kml_filename,
                 format: new ol.format.KML({
-                	extractStyles: false,
+                    extractStyles: false,
                     extractAttributes: true,
                     maxDepth: 2
                 })
             }),
-//            style: createPolygonStyleFunction(),
-//            style: new ol.style.Style({
-////                stroke: new ol.style.Stroke({color: 'white', width: 1}),
-////                fill: new ol.style.Fill({color: 'gainsboro'})
-////                text: new ol.style.Text({
-////                	textAlign: 'center',
-////                	textBaseline: 'middle',
-////                	font: 'Courier New',
-////                	fill: '#1a1a1a'
-////                })
-//            }),
-            opacity: 0.8
+            opacity: 0.7
         }); 
-//        console.log(layer.getSource());
         
         return layer;
     };

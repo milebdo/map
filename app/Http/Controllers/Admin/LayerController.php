@@ -267,9 +267,9 @@ class LayerController extends AdminController
         // Parse csv file
         $file = \Request::file('csv_uploader');
         $filename = $file->getClientOriginalName();
-        $file->move(public_path($layer->getIconsPath().'/'), $filename);
+        $file->move(public_path($layer->getPublicStoragePath().'/'), $filename);
         $row = 1;
-        $tmp = public_path($layer->getIconsPath()).'/'.$filename;
+        $tmp = public_path($layer->getPublicStoragePath()).'/'.$filename;
         if (($handle = fopen($tmp, "r")) !== FALSE) {
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 $num = count($data);
@@ -317,6 +317,7 @@ class LayerController extends AdminController
                         
                         // Add y value
                         if ($c == $y_index) {
+                            echo $data[$c];
                             $feature->geometry->coordinates[] = (float) $data[$c];
                         }
                     }
@@ -326,7 +327,6 @@ class LayerController extends AdminController
                 // Next row
                 $row++;
             }
-            
             // Clear csv file
             fclose($handle);
             unlink($tmp);
