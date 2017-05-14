@@ -250,6 +250,7 @@
    <main id="content" class="map-content" role="main">
         <h1 class="page-title">Dashboard</h1>
         <div id="map"></div>
+        <div id="print-version"></div>
     </main>
 </div>
 
