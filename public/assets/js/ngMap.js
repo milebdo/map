@@ -209,11 +209,11 @@ function ($http, ol, proj4, c) {
 	                          			   });
 	                    			   }
 	                				   
-	                				   if(feature.get("DESA")=='DERWATI'){
-	                    				   var polytFill = new ol.style.Fill({
-	                        			     color: 'red'
-	                        			   });
-	                    			   }
+//	                				   if(feature.get("DESA")=='DERWATI'){
+//	                    				   var polytFill = new ol.style.Fill({
+//	                        			     color: 'red'
+//	                        			   });
+//	                    			   }
 	                				   
 	                  			     return [new ol.style.Style({
 	                  			       stroke: stroke,
