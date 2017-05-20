@@ -1,4 +1,3 @@
-    
 angular.module('ngMap')
 .controller('ngPrint', ['$scope', '$window', 'ngMapBuilder',
 function ($scope, $window, ngMapBuilder) {
@@ -53,7 +52,7 @@ function ($scope, $window, ngMapBuilder) {
         angular.element('#print-version').empty();
         
         // Add layers content
-        angular.element('#layerSwitcher li input[type="checkbox"]').each(function (i, el) {
+        angular.element('#layerSwitcher li input[type="checkbox"]:checked').each(function (i, el) {
             var layer = angular.element(el).closest('li');
             angular.element('#print-version').append('<h4>' + angular.element(layer).find('label').text() + '</h4>');
             angular.element('#print-version').append(angular.element(layer).find('.layer-details').html());

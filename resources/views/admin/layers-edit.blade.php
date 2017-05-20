@@ -518,7 +518,7 @@
                     </div>
                     <div id="vector_options" style="display: none;">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 hidden">
                                 <div class="form-group">
                                     <label for="feature_info_template">{{ trans('backoffice.feature_info_template') }} 
                                         <small><a href="https://docs.angularjs.org/tutorial/step_02" target="_blank">{{ trans('backoffice.angularjs_link') }}</a></small>
