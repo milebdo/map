@@ -7,10 +7,11 @@
         <title>{{ $brand->name }}</title>
     @show
 
-    <link href="{{ asset('assets/css/map_print.css') }}" rel="stylesheet" media="print">
     <link href="{{ asset('assets/css/ol.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/sing/css/application.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/map.css') }}" rel="stylesheet" media="screen,projection">
+    <link href="{{ asset('assets/css/map_print.css') }}" rel="stylesheet" media="print">
     <!-- as of IE9 cannot parse css files with more that 4K classes separating in two files -->
     <!--[if IE 9]>
         <link href="css/application-ie9-part2.css" rel="stylesheet">
@@ -345,7 +346,6 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-@if(env('APP_ENV') === 'local')
 <script src="{{ asset('assets/js/ekko-lightbox.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/buffer.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/wkx.js') }}" type="text/javascript"></script>
@@ -361,9 +361,6 @@
 <script src="{{ asset('assets/js/ngSearchResults.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/ngNavigationToolbar.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/js/ngPrint.js') }}" type="text/javascript"></script>
-@else
-<script src="{{ asset('assets/js/production_map.js') }}" type="text/javascript"></script>
-@endif
 
 @section('script')
 <script type="text/javascript">
