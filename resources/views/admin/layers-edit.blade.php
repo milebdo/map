@@ -32,9 +32,11 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#geo" aria-controls="geo" role="tab" data-toggle="tab">{{ trans('backoffice.general') }}</a></li>
-                <li role="presentation"><a href="#icons" aria-controls="icons" role="tab" data-toggle="tab">{{ trans('backoffice.icons') }}</a></li>
+<!--                <li role="presentation"><a href="#icons" aria-controls="icons" role="tab" data-toggle="tab">{{ trans('backoffice.icons') }}</a></li>-->
                 @if($layer->type === 'geojson')
+                @if($layer->geojson_geomtype != 'LineString')
                 <li role="presentation"><a href="#features" aria-controls="features" role="tab" data-toggle="tab">{{ trans('backoffice.layer_mapeditor') }}</a></li>
+                @endif
                 <li role="presentation"><a href="#import" aria-controls="import" role="tab" data-toggle="tab">{{ trans('backoffice.layer_import') }}</a></li>
                 @endif
             </ul>
@@ -55,7 +57,7 @@
                                 <input class="form-control" type="text" name="title" id="title" required
                                        value="">
                                 <span class="help-block alert-danger v-error-title"></span>
-                                <span class="help-block alert-danger v-error-seo_slug"></span>
+<!--                                <span class="help-block alert-danger v-error-seo_slug"></span>-->
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -443,11 +445,11 @@
                         @if ($layer->id)
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="alert alert-success" role="alert">
+<!--                                <div class="alert alert-success" role="alert">
                                     {{ trans('backoffice.sharegeojson') }} <a href="{{ url('storage/layer/'.$layer->id.'/geojson.json') }}"  target="_blank">
                                         {{ url('storage/layer/'.$layer->id.'/geojson.json') }}
                                     </a>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                         @endif
@@ -457,8 +459,8 @@
                                     <label for="geojson_geomtype">{{ trans('backoffice.geojson_geomtype') }}</label>
                                     <select class="form-control" name="geojson_geomtype">
                                         <option value="Point" @if($layer->geojson_geomtype === 'Point') selected @endif>Point</option>
-                                        <option value="LineString" @if($layer->geojson_geomtype === 'LineString') selected @endif>LineString</option>
                                         <option value="Polygon" @if($layer->geojson_geomtype === 'Polygon') selected @endif>Polygon</option>
+                                        <option value="LineString" @if($layer->geojson_geomtype === 'LineString') selected @endif>Region</option>
                                     </select>
                                     <span class="help-block alert-danger v-error-geojson_geomtype"></span>
                                 </div>
@@ -531,7 +533,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row hidden">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="search">{{ trans('backoffice.layer_search') }}</label>
@@ -549,6 +551,7 @@
                         </div>
                     </div>
                     <fieldset id="style_options" style="display: none;">
+                        @if($layer->geojson_geomtype != 'LineString')
                         <legend>{{ trans('backoffice.static_style') }}</legend>
                         <div class="row">
                             <div class="col-md-3">
@@ -560,7 +563,7 @@
                                     <input class="form-control" type="file" name="ol_style_static_icon" id="ol_style_static_icon" value="">
                                 </div>
                             </div>
-                            <div class="col-md-3 hidden">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ol_style_static_fill_color">{{ trans('backoffice.ol_style_static_fill_color') }}</label>
                                     <span class="help-block alert-danger v-error-ol_style_static_fill_color"></span>
@@ -572,7 +575,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 hidden">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ol_style_static_stroke_color">{{ trans('backoffice.ol_style_static_stroke_color') }}</label>
                                     <span class="help-block alert-danger v-error-ol_style_static_stroke_color"></span>
@@ -584,7 +587,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 hidden">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ol_style_static_stroke_width">{{ trans('backoffice.ol_style_static_stroke_width') }}</label>
                                     <span class="help-block alert-danger v-error-ol_style_static_stroke_width"></span>
@@ -594,7 +597,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+                        @endif
                         <div class="row hidden">
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -653,7 +656,7 @@
                     
                 </div>
                 
-                <div role="tabpanel" class="tab-pane fade" id="icons">
+<!--                <div role="tabpanel" class="tab-pane fade" id="icons">
                     
                     <h4>{{ trans('backoffice.current_images') }}</h4>
                     <div class="row">
@@ -673,7 +676,7 @@
                         <input class="form-control" type="file" name="image_uploader[]" id="image_uploader">
                     </div>
                     
-                </div>
+                </div>-->
                 
                 @if($layer->type === 'geojson')
                 <div role="tabpanel" class="tab-pane fade in active" id="features">

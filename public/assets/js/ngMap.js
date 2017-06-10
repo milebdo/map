@@ -292,14 +292,15 @@ function ($http, ol, proj4, c) {
                 console ? console.log('Layer type not suported:', item.layer.type) : false;
             }
             if (layer) {
+                console.log(item);
                 layer.set('id', item.id);
                 layer.set('title', item.layer.title);
                 layer.set('group', item.group);
                 layer.set('baselayer', item.baselayer);
                 layer.setVisible(item.visible);
-                layer.set('content', item.layer.content);
-                layer.set('template', item.layer.feature_info_template !== '' ? item.layer.feature_info_template : false);
-                layer.set('search', item.layer.search ? item.layer.search.split(',') : false);
+//                layer.set('content', item.layer.content);
+//                layer.set('template', item.layer.feature_info_template !== '' ? item.layer.feature_info_template : false);
+//                layer.set('search', item.layer.search ? item.layer.search.split(',') : false);
                 if (layer.get('group')) {
                     if (typeof glayers[layer.get('group').content.id] === 'undefined') {
                         glayers[layer.get('group').content.id] = new ol.Collection();
@@ -552,7 +553,7 @@ function ($http, ol, proj4, c) {
      * @returns {Map.ol.layer.Vector}
      */
     var createLayerKML = function (item) {
-        
+        console.log(item.layer.id);
         var layer = new ol.layer.Vector({
             source: new ol.source.Vector({
                 url: c.baseURL + '/storage/layer/' + item.layer.id + '/' + item.layer.kml_filename,
@@ -725,6 +726,7 @@ function ($http, ol, proj4, c) {
                 }
             }),
             style: function (feature, resolution) {
+//                var t = feature.getGeometry().getType();
                 style = createStyle(item.layer, feature, resolution);
                 return [style];
             }
