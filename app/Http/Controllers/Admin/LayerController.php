@@ -260,6 +260,8 @@ class LayerController extends AdminController
         $x_index = 1;
         $y_index = 2;
         
+        $geometryType = 'Point';
+        
         // Get current features
         $json = json_decode($layer->geojson_features);
         $json->features = [];
@@ -292,6 +294,10 @@ class LayerController extends AdminController
                         if (strtolower($data[$c]) == 'y') {
                             $y_index = $c;
                         }
+                        
+                        if (strtolower($data[$c]) == 'geometry') {
+                            $geometryType = $c;
+                        }
                     }
                 } else {
                     
@@ -300,7 +306,7 @@ class LayerController extends AdminController
                     $feature->type = 'Feature';
                     $feature->properties = new \stdClass();
                     $feature->geometry = new \stdClass();
-                    $feature->geometry->type = 'Point';
+//                    $feature->geometry->type = 'Point';
                     $feature->geometry->coordinates = [];
 
                     for ($c=0; $c < $num; $c++) {
@@ -308,6 +314,12 @@ class LayerController extends AdminController
                         // Add attribute value
                         if (isset($csv_attributes[$c]) && in_array($csv_attributes[$c], $attributes)) {
                             $feature->properties->{$csv_attributes[$c]} = $data[$c];
+                        }
+                        
+                        if ($c == $geometryType) {
+                            $feature->geometry->type = $data[$c];
+                        } else {
+                            $feature->geometry->type = $geometryType;
                         }
                         
                         // Add x value

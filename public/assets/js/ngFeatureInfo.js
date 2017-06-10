@@ -48,21 +48,27 @@ function ($scope, ngMapBuilder) {
         ngMapBuilder.getMap().on('singleclick', function (evt) {
             // Search features on mouse position
             var pixel = ngMapBuilder.getMap().getEventPixel(evt.originalEvent);
-            var attributes = ngMapBuilder.getMap().forEachFeatureAtPixel(pixel, function (feature, layer) {                
+            var attributes = ngMapBuilder.getMap().forEachFeatureAtPixel(pixel, function (feature, layer) {
+                console.log(layer);
                 return feature;
             });
             var coordinate = evt.coordinate;
             var result = attributeContent(attributes.getProperties(), attributes.getKeys());
-//            console.log(result);
             content.innerHTML = result;
             overlay.setPosition(coordinate);       
         });
         
         function attributeContent(attributes, keys) {
-            var result;
+            var result = '';
             for (var value in attributes) {
-                if (value !== null) {
-                    result += value +': '+ attributes[value] + '<br/>';
+                if (value !== null && value !== 'geometry' &&
+                    value !== 'PROVNO' && value !== 'KABKOTNO' &&
+                    value !== 'KECNO' && value !== 'DESANO' &&
+                    value !== 'DESA_1' && value !== 'ID2012' &&
+                    value !== 'ID2013' && value !== 'IDKAB2' && value !== 'IDKEC_2') {
+                    var content = attributes[value];
+                    if (value == 'DESA') value = 'KELURAHAN';
+                    result += value +': '+ content + '<br/>';
                 }
             }
             return result;
