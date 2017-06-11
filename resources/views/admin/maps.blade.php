@@ -33,6 +33,10 @@
                 {
                     "orderable": false,
                     "searchable": false,
+//                    "render": function ( data, type, full, meta ) {
+//                        return '<a class="btn btn-success btn-xs" title="{{ trans('backoffice.edit') }}" href="' + "{{ url('admin/maps/form') }}/" + full.id + '"><i class="fa fa-pencil"></i></a>'
+//                            + '&nbsp;<a class="btn btn-danger btn-xs" title="{{ trans('backoffice.delete') }}" href="' + "{{ url('admin/maps/delete') }}/" + full.id + '"><i class="fa fa-trash"></i></a>';
+//                    }
                     "render": function ( data, type, full, meta ) {
                         return '<a class="btn btn-success btn-xs" title="{{ trans('backoffice.edit') }}" href="' + "{{ url('admin/maps/form') }}/" + full.id + '"><i class="fa fa-plus"></i> Tambah Layer</a>';
                     }
