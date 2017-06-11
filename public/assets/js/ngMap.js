@@ -155,122 +155,49 @@ function ($http, ol, proj4, c) {
                 	
                 var featureCount = vectorSource.getFeatures().length;
                 vectorSource.forEachFeature(function(feature) {                	
-                	if(i<=featureCount)
-                	{
-                		region = (function() {
-                			   var stroke = new ol.style.Stroke({
-                			     color: '#EEE8AA'
-                			   });
-                			   var textStroke = new ol.style.Stroke({
-                			     color: '#fff',
-                			     width: 1
-                			   });
-                			   var textFill = new ol.style.Fill({
-                			     color: 'white'
-                			   });
-                			   
-                			   return function(feature, resolution) {
-//	                			   if(feature.get("ID")>132 && feature.get("ID")<160)
-//	                			   {
-//	                  			     return [new ol.style.Style({
-//	                  			       stroke: stroke,
-//	                  			       fill: new ol.style.Fill({color: 'yellow'}),
-//	                  			       text: new ol.style.Text({
-//	                  			         font: '10px Calibri,sans-serif',
-//	                  			         text: feature.get("KECAMATAN"),
-//	                  			         fill: textFill,
-//	                  			         stroke: textStroke
-//	                  			       })
-//	                  			     })];
-//	                			   }
-//	                			   if(feature.get("KECAMATAN"))
-//	                			   {
-//	                  			     return [new ol.style.Style({
-//	                  			       stroke: stroke,
-//	                  			       fill: new ol.style.Fill({color: 'green'}),
-//	                  			       text: new ol.style.Text({
-//	                  			         font: '10px Calibri,sans-serif',
-//	                  			         text: feature.get("KECAMATAN"),
-//	                  			         fill: textFill,
-//	                  			         stroke: textStroke
-//	                  			       })
-//	                  			     })];
-//	                			   }
-	                			   //if(feature.get("DESA"))
-	                			   //{
-	                				   if(feature.get("KECAMATAN")=='RANCASARI'){
-	                    				   var polytFill = new ol.style.Fill({
-	                        			     color: '#B9BF08'
-	                        			   });
-	                    			   }
-	                    			   else {
-	                    				   var polytFill = new ol.style.Fill({
-	                          			     color: '#0E9A10'
-	                          			   });
-	                    			   }
-	                				   
-//	                				   if(feature.get("DESA")=='DERWATI'){
-//	                    				   var polytFill = new ol.style.Fill({
-//	                        			     color: 'red'
-//	                        			   });
-//	                    			   }
-	                				   
-	                  			     return [new ol.style.Style({
-	                  			       stroke: stroke,
-	                  			       fill: polytFill,
-	                  			       text: new ol.style.Text({
-	                  			         font: '8px Calibri,sans-serif',
-	                  			         text: feature.get("DESA")+'\n'+feature.get("KECAMATAN"),
-	                  			         fill: textFill,
-//	                  			         stroke: textStroke
-	                  			       })
-	                  			     })];
-	                			  // }
-	                			   //else {
-	                				   /*if(feature.get("KECAMATAN")=='RANCASARI'){
-	                    				   var polytFill = new ol.style.Fill({
-	                        			     color: 'white'
-	                        			   });
-	                    			   }
-	                    			   else {
-	                    				   var polytFill = new ol.style.Fill({
-	                          			     color: 'white'
-	                          			   });
-	                    			   }*/
-	                				   
-	                				   /*return [new ol.style.Style({
-		                  			       stroke: stroke,
-		                  			       fill: polytFill,
-		                  			       text: new ol.style.Text({
-		                  			         font: '10px Calibri,sans-serif',
-		                  			         text: feature.get("KECAMATAN"),
-		                  			         fill: textFill,
-		                  			         stroke: textStroke
-		                  			       })
-		                  			     })];*/
-	                			  // }
-                			   };
-//                			   else {
-//                				   return function(feature, resolution) {
-//                      			     return [new ol.style.Style({
-//                      			       stroke: stroke,
-//                      			       fill: new ol.style.Fill({color: 'red'}),
-//                      			       text: new ol.style.Text({
-//                      			         font: '10px Calibri,sans-serif',
-//                      			         text: feature.get("KECAMATAN"),
-//                      			         fill: textFill,
-//                      			         stroke: textStroke
-//                      			       })
-//                      			     })];
-//                      			   };
-//                			   }                			   
-                			 })()
+                    if(i<=featureCount)
+                    {
+                        region = (function() {
+                            var stroke = new ol.style.Stroke({
+                              color: '#EEE8AA'
+                            });
+                            var textStroke = new ol.style.Stroke({
+                              color: '#fff',
+                              width: 2
+                            });
+                            var textFill = new ol.style.Fill({
+                              color: '#000'
+                            });
+
+                            return function(feature, resolution) {
+                                 if(feature.get("KECAMATAN")=='RANCASARI'){
+                                 var polytFill = new ol.style.Fill({
+                                   color: '#0E9A10'
+                                 });
+                            }
+                            else {
+                                    var polytFill = new ol.style.Fill({
+                                      color: '#0E9A10'
+                                    });
+                            }
+
+                              return [new ol.style.Style({
+                                stroke: stroke,
+                                fill: polytFill,
+                                text: new ol.style.Text({
+                                  font: '9px Calibri,sans-serif',
+                                  text: feature.get("DESA"),
+                                  fill: textFill,
+                                  stroke: textStroke
+                                })
+                              })];
+                            };               			   
+                          })()
                     	i++;
                 	}     
                   });  
-                
-                	layer.setStyle(region);
-	              });
+                layer.setStyle(region);
+                });
             	
                 break;
             case "shapefile":
@@ -292,15 +219,13 @@ function ($http, ol, proj4, c) {
                 console ? console.log('Layer type not suported:', item.layer.type) : false;
             }
             if (layer) {
-                console.log(item);
+//                console.log(item.layer.content.title);
                 layer.set('id', item.id);
-                layer.set('title', item.layer.title);
+                layer.set('title', item.layer.content.title);
                 layer.set('group', item.group);
                 layer.set('baselayer', item.baselayer);
                 layer.setVisible(item.visible);
-//                layer.set('content', item.layer.content);
-//                layer.set('template', item.layer.feature_info_template !== '' ? item.layer.feature_info_template : false);
-//                layer.set('search', item.layer.search ? item.layer.search.split(',') : false);
+//                console.log(layer);
                 if (layer.get('group')) {
                     if (typeof glayers[layer.get('group').content.id] === 'undefined') {
                         glayers[layer.get('group').content.id] = new ol.Collection();
@@ -702,9 +627,17 @@ function ($http, ol, proj4, c) {
      * @returns {Map.ol.layer.Vector|Map.createLayerGeoJSON.layer}
      */
     var createLayerGeoJSON = function (item) {
+//        console.log(item.layer.content.title);
         var style, features = [];
         var format = new ol.format.GeoJSON();
         var url = c.baseURL + '/storage/layer/' + item.layer.id + '/geojson.json';
+        
+//        proj4.defs('EPSG:32748', "+proj=utm +zone=48 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs");
+//
+//        var projection = new ol.proj.Projection({
+//            code: 'EPSG:32748',
+//            units: 'm'
+//        });
 
         function loadFeatures(extent, resolution, projection) {
             $http.get(url)

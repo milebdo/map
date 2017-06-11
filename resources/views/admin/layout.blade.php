@@ -52,6 +52,14 @@ Main sidebar seen on the left. may be static or collapsing depending on selected
                     {{ trans('backoffice.maps') }}
                 </a>
             </li>
+<!--             <li>
+                <a href="{{ url('/admin/projections/list') }}">
+                    <span class="icon">
+                    <i class="fa fa-arrows-alt"></i>
+                    </span>
+                    {{ trans('backoffice.projections') }}
+                </a>
+             </li>-->
             <li>
                 <a href="{{ url('/admin/layers/list') }}" class="item" onClick="window.location.reload()">
                     <span class="icon">

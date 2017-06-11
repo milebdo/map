@@ -118,12 +118,12 @@
                                                    type="checkbox" ng-checked="l.visible" />
                                                <span ng-bind="l.content.title"></span>
                                            </label>
-                                           <span ng-show="l.content.seo_description.length"
+<!--                                           <span ng-show="l.content.seo_description.length"
                                                class="pull-right layer-details-toggle item-zoom"
                                                data-toggle="collapse"
                                                data-target=".layer-details-@{{ l.id }}">
                                                 <span class="caret"></span>
-                                            </span>
+                                            </span>-->
                                            <a ng-click="zoomLayer(l)" ng-show="l.ol.getVisible()"
                                                title="Zoom to layer extent"
                                                class="item-zoom btn btn-xs pull-right">
