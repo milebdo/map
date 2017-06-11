@@ -219,13 +219,12 @@ function ($http, ol, proj4, c) {
                 console ? console.log('Layer type not suported:', item.layer.type) : false;
             }
             if (layer) {
-//                console.log(item.layer.content.title);
                 layer.set('id', item.id);
                 layer.set('title', item.layer.content.title);
                 layer.set('group', item.group);
                 layer.set('baselayer', item.baselayer);
                 layer.setVisible(item.visible);
-//                console.log(layer);
+                layer.set('content', item.layer.content);
                 if (layer.get('group')) {
                     if (typeof glayers[layer.get('group').content.id] === 'undefined') {
                         glayers[layer.get('group').content.id] = new ol.Collection();
@@ -627,23 +626,23 @@ function ($http, ol, proj4, c) {
      * @returns {Map.ol.layer.Vector|Map.createLayerGeoJSON.layer}
      */
     var createLayerGeoJSON = function (item) {
-//        console.log(item.layer.content.title);
+
         var style, features = [];
         var format = new ol.format.GeoJSON();
         var url = c.baseURL + '/storage/layer/' + item.layer.id + '/geojson.json';
         
-//        proj4.defs('EPSG:32748', "+proj=utm +zone=48 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs");
-//
-//        var projection = new ol.proj.Projection({
-//            code: 'EPSG:32748',
-//            units: 'm'
-//        });
+        proj4.defs('EPSG:32748', "+proj=utm +zone=48 +south +ellps=WGS84 +datum=WGS84 +units=m +no_defs");
+        var projection = new ol.proj.Projection({
+            code: 'EPSG:32748',
+            units: 'm'
+        });
 
         function loadFeatures(extent, resolution, projection) {
             $http.get(url)
             .success(function (response) {
                 features = format.readFeatures(response, {
-                    featureProjection: 'EPSG:' + config.map.projection.srid
+                    featureProjection: 'EPSG:' + config.map.projection.srid,
+                    dataProjection: 'EPSG:4326',
                 });
                 angular.forEach(features, function (f, i) {
                     layer.getSource().addFeature(f);
@@ -659,7 +658,6 @@ function ($http, ol, proj4, c) {
                 }
             }),
             style: function (feature, resolution) {
-//                var t = feature.getGeometry().getType();
                 style = createStyle(item.layer, feature, resolution);
                 return [style];
             }
