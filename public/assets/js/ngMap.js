@@ -219,13 +219,12 @@ function ($http, ol, proj4, c) {
                 console ? console.log('Layer type not suported:', item.layer.type) : false;
             }
             if (layer) {
-//                console.log(item.layer.content.title);
                 layer.set('id', item.id);
                 layer.set('title', item.layer.content.title);
                 layer.set('group', item.group);
                 layer.set('baselayer', item.baselayer);
                 layer.setVisible(item.visible);
-//                console.log(layer);
+                layer.set('content', item.layer.content);
                 if (layer.get('group')) {
                     if (typeof glayers[layer.get('group').content.id] === 'undefined') {
                         glayers[layer.get('group').content.id] = new ol.Collection();
