@@ -51,7 +51,7 @@ class HomeController extends Controller {
         }
         
         // Load user pages
-        Route::group(['middleware' => ['visit']], function () {
+        Route::group(['middleware' => ['auth']], function () {
             
             
 
