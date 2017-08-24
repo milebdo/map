@@ -252,7 +252,9 @@
                 @if (!Auth::check())
                 <li><a href="{{ url('auth/login') }}">{{ trans('layout.link_login') }}</a></li>
                 @else
-                <li><a href="{{ url('admin/maps/list') }}">{{ trans('layout.link_admin') }}</a></li>
+                    @if (Auth::user()->roles != 'guest')
+                        <li><a href="{{ url('admin/maps/list') }}">{{ trans('layout.link_admin') }}</a></li>
+                    @endif
                 <li><a href="{{ url('auth/logout') }}">{{ trans('layout.link_logout') }}</a></li>
                 @endif
             </ul>
